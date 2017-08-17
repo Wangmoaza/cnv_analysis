@@ -34,3 +34,12 @@ By contrast, the high-level thresholds are calculated on a sample-by-sample basi
 Hope this helps, though I did not yet manage to obtain a copy of the 'sample_cutoffs.txt' for my cancer cohort. In case you found any more information please share.
 
 https://www.biostars.org/p/133927/
+
+---
+
+    For TCGA studies, the table in all_thresholded.by_genes.txt (which is the part of the GISTIC output that is used to determine the copy-number status of each gene in each sample in cBioPortal) is obtained by applying both low- and high-level thresholds to to the gene copy levels of all the samples. The entries with value +/- 2 exceed the high-level thresholds for amps/dels, and those with +/- 1 exceed the low-level thresholds but not the high-level thresholds. The low-level thresholds are just the 'amp_thresh' and 'del_thresh' noise threshold input values to GISTIC (typically 0.1 or 0.3) and are the same for every thresholds.
+
+    By contrast, the high-level thresholds are calculated on a sample-by-sample basis and are based on the maximum (or minimum) median arm-level amplification (or deletion) copy number found in the sample. The idea, for deletions anyway, is that this level is a good approximation for hemizygous given the purity and ploidy of the sample.
+
+
+https://biology.stackexchange.com/questions/34704/how-copy-number-variation-thresholds-are-defined-in-gistic
