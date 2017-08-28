@@ -43,3 +43,21 @@ https://www.biostars.org/p/133927/
 
 
 https://biology.stackexchange.com/questions/34704/how-copy-number-variation-thresholds-are-defined-in-gistic
+
+---
+
+GISTIC 1.0
+
+GISTIC then assigns GAMP and GDEL scores to each locus, respectively representing the frequency of amplifications (deletions) seen at that locus, multiplied by the average increase (decrease) in the log2 ratio in the amplified (deleted) samples. The score (G) is based on the average amplitude (a) of the lesion type (amplification or deletion) and its frequency (f) in the data set according to the formula: Gi(lesion type) = fi(lesion type) ai(lesion type).
+
+#### GISTIC analysis of large-scale regions
+Significant broad regions of amplification and deletion were identified by applying GISTIC with the default thresholds of 2.14/1.87 (log2 ratio of ±0.1). Regions identified by GISTIC that were greater than 50% of a chromosome arm were considered large-scale. Region frequencies were calculated by determining the number of samples that had a median log2 ratio greater/less than the threshold (±0.1), for those SNPs within the region.
+
+#### GISTIC analysis of focal regions
+Significant focal regions of amplification and deletion were identified by applying GISTIC with a threshold of 3.6/1.2 (log2 ratio of 0.848/-0.737).
+
+equivalent to multiplying the frequency of alteration by the mean amplitude in altered samples
+
+https://www.nature.com/nature/journal/v450/n7171/full/nature06358.html
+
+https://genomebiology.biomedcentral.com/articles/10.1186/gb-2011-12-4-r41#MOESM1

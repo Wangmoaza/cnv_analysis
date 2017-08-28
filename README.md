@@ -13,6 +13,9 @@ part of KAIST internship
 * *Gistic2_CopyNumber_Gistic2_all_thresholded.by_genes* : TCGA BRCA cnv gistic2 threshold dataset
 * *Cancer_Role.tsv* : gene roles in cancer. oncogene or TSG.
 * *essential_gene_cnv_gistic.tsv* : combined Tumor_prediction.tsv, Normal_prediction.tsv, CYCLOPS_project_drive.txt, Gistic2_all_data, Gistic2_al_thresholded to one file in the format case/gene/normal_ess/tumor_ess/cnv_threshold/cnv_val/role
+* *ccle_ess_cnv_cyclops_role.tsv* : merging deep_input_c3_pert_v2LogN and CCLE_BR_lines_mutation.txt. Chose cases that have cnv info. In the format gene / cell / ess / cnv / CYCLOPS / role
+* *cyclops_tcga_ccle_del.txt* : subset of CYLOPS (from project DRIVE) genes that have more cases where # of deletion > # of amplification in both TCGA and CCLE.
+* *cyclops_tcga_del.txt* : subset of CYLOPS (from project DRIVE) genes that have more cases where # of deletion > # of amplification in TCGA.
 
 ### results
 
@@ -47,3 +50,35 @@ part of KAIST internship
     - tumor-only essential genes, GISTIC threshold < 0 or > 0
     - GO Biological Process 2017b bar graph sorted by combined score
     - output file : GO_tumor_cnv_deletion.png, GO_tumor_cnv_duplication.png
+
+#### 2017-08-28
+
+* Cell line cnv vs. CYCLOPS
+    - 133 CYCLOPS genes x 34 cell lines
+    - No threshold
+        - # of CYCLOPS genes where deleted case # > amplified case # : 45
+        - # of CYCLOPS genes where deleted case # < amplified case # : 78
+    - Threshold 0.1, -0.1
+        + # of CYCLOPS genes where deleted case # > amplified case # : 51
+        + # of CYCLOPS genes where deleted case # < amplified case # : 78
+    - Maybe CYLOPS gene list does not apply well to CCLE BRCA cell lines?
+* Cell lines cnv vs. oncogenes
+    - 110 oncogenes x 34 cell lines
+    - No threshold
+        + # of oncogenes where deleted case # > amplified case # : 34
+        + # of oncogenes where deleted case # < amplified case # : 67
+    - Threshold 0.1, -0.1
+        + # of oncogenes where deleted case # > amplified case # : 41
+        + # of oncogenes where deleted case # < amplified case # : 58
+* Cell lines cnv vs. tsg
+    - 86 tsg x 34 cell lines
+    - No threshold
+        - # of tsg where deleted case # > amplified case # : 32
+        - # of tsg where deleted case # < amplified case # : 47
+    - Threshold 0.1, -0.1
+        + # of tsg where deleted case # > amplified case # : 41
+        + # of tsg where deleted case # < amplified case # : 34
+
+* Good results. 87 out of 88 breast_cyclops and cnv < 0 cases were essential. Seems like breast_cyclops set is good representation of breast cancer CYCLOPS genes.
+
+
