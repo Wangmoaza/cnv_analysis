@@ -16,6 +16,11 @@ part of KAIST internship
 * *ccle_ess_cnv_cyclops_role.tsv* : merging deep_input_c3_pert_v2LogN and CCLE_BR_lines_mutation.txt. Chose cases that have cnv info. In the format gene / cell / ess / cnv / CYCLOPS / role
 * *cyclops_tcga_ccle_del.txt* : subset of CYLOPS (from project DRIVE) genes that have more cases where # of deletion > # of amplification in both TCGA and CCLE.
 * *cyclops_tcga_del.txt* : subset of CYLOPS (from project DRIVE) genes that have more cases where # of deletion > # of amplification in TCGA.
+* *cyclops_essential_partial_loss_ratio.tsv* : subset of CYCLOPS (from project DRIVE) genes. In the format gene / essential and partial loss count / partial loss count /  essential and homologous loss count / homologous loss count / essential and neutral count /neutral count / (essential and partial loss)/(partial) ratio / (essential and neutral)/(neutral) ratio 
+    * Partial loss: -1.28 <= cnv < -0.1, Homologus loss: cnv < -1.28, Neutral: cnv >= -0.1.
+    * Dataset used : breast_essential_c1.mat for essentiality information, CCLE_BR_lines_CNV.txt for cnv (log2 ratio).
+    * Excluded genes that had < 3 cases for partial-loss and homologous-loss. 128 genes left.
+   
 
 ### results
 
@@ -82,3 +87,6 @@ part of KAIST internship
 * Good results. 87 out of 88 breast_cyclops and cnv < 0 cases were essential. Seems like breast_cyclops set is good representation of breast cancer CYCLOPS genes.
 
 
+#### 2017-08-30
+
+* CYCLOPS gene analysis. Find out CYCLOPS gene subset that fits breast cancer cell line samples. See *cyclops_essential_partial_loss_ratio.tsv* file description. 
